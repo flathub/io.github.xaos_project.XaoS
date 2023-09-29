@@ -1,6 +1,6 @@
 app-id: io.github.xaos_project.XaoS
 runtime: org.kde.Platform
-runtime-version: 5.15-21.08
+runtime-version: 6.5
 sdk: org.kde.Sdk
 command: xaos
 rename-icon: xaos
@@ -25,17 +25,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/xaos-project/XaoS.git
-        tag: release-4.2.1
-        commit: 632a48b088326a916e7c6f8fdb4a549ddfcbc7c0
+        tag: release-4.3
+        commit: 8ae2d96f03f6112d4418bcdf4c317c0395756556
         x-checker-data:
           type: git
           tag-pattern: ^release-([\d.]+)$
       - type: shell
         commands:
-          - sed -i 's@#define DATAPATH "/usr/share/XaoS"@#define DATAPATH "/app/share/XaoS"@' src/include/config.h
-      - type: patch
-        path: appdata1.patch
-      - type: patch
-        path: appdata2.patch
-      - type: patch
-        path: appdata3.patch
+          - sed -i 's@#define DATAPATH "/usr/share/XaoS"@#define DATAPATH "/app/share/XaoS"@'
+            src/include/config.h
