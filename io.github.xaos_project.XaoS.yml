@@ -25,8 +25,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/xaos-project/XaoS.git
-        tag: release-4.3
-        commit: 8ae2d96f03f6112d4418bcdf4c317c0395756556
+        tag: release-4.3.1
+        commit: 7f36177f32a23eea88911afb90878046912d7e2d
         x-checker-data:
           type: git
           tag-pattern: ^release-([\d.]+)$
