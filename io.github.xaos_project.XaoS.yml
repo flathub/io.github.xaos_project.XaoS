@@ -1,6 +1,6 @@
 app-id: io.github.xaos_project.XaoS
 runtime: org.kde.Platform
-runtime-version: 6.5
+runtime-version: 6.6
 sdk: org.kde.Sdk
 command: xaos
 rename-icon: xaos
@@ -17,8 +17,10 @@ modules:
     no-make-install: true
     post-install:
       - install -Dm 755 bin/xaos ${FLATPAK_DEST}/bin/xaos
-      - mkdir -p ${FLATPAK_DEST}/share/XaoS/
-      - cp -a examples tutorial catalogs ${FLATPAK_DEST}/share/XaoS/
+      - mkdir -p ${FLATPAK_DEST}/share/XaoS/examples
+      - cp -a tutorial catalogs ${FLATPAK_DEST}/share/XaoS/
+      - find examples -name '*.xpf' -exec cp {} ${FLATPAK_DEST}/share/XaoS/examples \; # flattening folders
+
       - install -Dm 644 xdg/xaos.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/xaos.png
       - install -Dm 644 xdg/*.desktop ${FLATPAK_DEST}/share/applications/xaos.desktop
       - install -Dm 644 xdg/xaos.appdata.xml ${FLATPAK_DEST}/share/metainfo/xaos.appdata.xml
@@ -26,7 +28,6 @@ modules:
       - type: git
         url: https://github.com/xaos-project/XaoS.git
         tag: release-4.3.2
-        commit: 85318a73f076443e234e5e41a8354b4441150c61
         x-checker-data:
           type: git
           tag-pattern: ^release-([\d.]+)$
