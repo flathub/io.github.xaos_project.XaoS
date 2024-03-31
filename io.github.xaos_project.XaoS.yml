@@ -19,7 +19,8 @@ modules:
       - install -Dm 755 bin/xaos ${FLATPAK_DEST}/bin/xaos
       - mkdir -p ${FLATPAK_DEST}/share/XaoS/examples
       - cp -a tutorial catalogs ${FLATPAK_DEST}/share/XaoS/
-      - find examples -name '*.xpf' -exec cp {} ${FLATPAK_DEST}/share/XaoS/examples \; # flattening folders
+      - find examples -name '*.xpf' -exec cp {} ${FLATPAK_DEST}/share/XaoS/examples
+        \;                                                                             # flattening folders
 
       - install -Dm 644 xdg/xaos.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/xaos.png
       - install -Dm 644 xdg/*.desktop ${FLATPAK_DEST}/share/applications/xaos.desktop
@@ -28,10 +29,11 @@ modules:
       - type: git
         url: https://github.com/xaos-project/XaoS.git
         # tag: release-4.3.2
-        commit: a5228226bdd927af9807e0781f946c15477c924c
+        commit: 85318a73f076443e234e5e41a8354b4441150c61
         x-checker-data:
           type: git
           tag-pattern: ^release-([\d.]+)$
+        tag: release-4.3.2
       - type: shell
         commands:
           - sed -i 's@#define DATAPATH "/usr/share/XaoS"@#define DATAPATH "/app/share/XaoS"@'
